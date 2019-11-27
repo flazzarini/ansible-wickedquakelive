@@ -29,7 +29,7 @@
     dest: "{{ quakelive_home }}"
     remote_src: "yes"
     creates: "{{ quakelive_home }}/minqlx.zip"
-  when: result_minqlx.rc != 1
+  when: result_minqlx.rc != 0
 
 - name: Install minqlx-plugins
   git:
