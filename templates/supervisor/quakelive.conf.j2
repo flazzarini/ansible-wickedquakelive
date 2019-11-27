@@ -1,6 +1,5 @@
 [program:quakelive]
-command=/home/{{ quakelive_user }}/quakelive/run_server_x64_minqlx.sh %(process_num)s
+command=/home/{{ quakelive_user }}/quakelive/run_server_x64_minqlx.sh
 user={{ quakelive_user }}
-process_name=qzeroded_%(process_num)s
 numprocs=1
 autorestart=true
