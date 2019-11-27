@@ -1,0 +1,44 @@
+- name: Install quakelive using steamcmd
+  shell: |
+    /usr/games/steamcmd +login anonymous +force_install_dir {{ quakelive_home }} +app_update 349090 +quit
+  args:
+    creates: "{{ quakelive_home }}"
+  ignore_errors: true
+  become: "yes"
+  become_user: "{{ quakelive_user }}"
+
+- name: Verify if minqlx is already installed
+  shell: |
+    set -o pipefail
+    strings {{ quakelive_home }}/minqlx.so | grep "^v{{ quakelive_minqlx_version }}"
+  args:
+    executable: /bin/bash
+  changed_when: result_minqlx.rc == 1
+  failed_when: result_minqlx.rc > 1
+  register: result_minqlx
+
+- name: Download minqlx
+  get_url:
+    url: "https://github.com/MinoMino/minqlx/releases/download/v{{ quakelive_minqlx_version }}/minqlx_v{{ quakelive_minqlx_version }}.tar.gz"
+    dest: "/tmp/minqlx-{{ quakelive_minqlx_version }}.tar.gz"
+  when: result_minqlx.rc > 1
+
+- name: Extract minqlx to quakelive folder
+  unarchive:
+    src: "/tmp/minqlx-{{ quakelive_minqlx_version }}.tar.gz"
+    dest: "{{ quakelive_home }}"
+    remote_src: "yes"
+    creates: "{{ quakelive_home }}/minqlx.zip"
+  when: result_minqlx.rc > 1
+
+- name: Install minqlx-plugins
+  git:
+    repo: https://github.com/MinoMino/minqlx-plugins.git
+    dest: "{{ quakelive_home }}/minqlx-plugins"
+  become: true
+  become_user: "{{ quakelive_user }}"
+
+- name: Install pip requirements of minqlx
+  pip:
+    executable: /usr/bin/pip3
+    requirements: "{{ quakelive_home }}/minqlx-plugins/requirements.txt"

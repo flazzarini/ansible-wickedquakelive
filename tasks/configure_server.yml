@@ -1,0 +1,20 @@
+- name: Compile workshop.txt file
+  template:
+    src: workshop.txt.j2
+    dest: "{{ quakelive_home }}/baseq3/workshop.txt"
+    owner: "{{ quakelive_user }}"
+    group: "{{ quakelive_user }}"
+    mode: 0660
+
+- name: Compile server.cfg file
+  template:
+    src: server.cfg.j2
+    dest: "{{ quakelive_home }}/baseq3/server.cfg"
+    owner: "{{ quakelive_user }}"
+    group: "{{ quakelive_user }}"
+    mode: 0660
+
+- name: Place all mappool files
+  copy:
+    src: mappools/
+    dest: "{{ quakelive_home }}/baseq3"

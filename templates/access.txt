@@ -1,0 +1,5 @@
+{{ quakelive_owner_steam_id }}|admin
+
+{% for additional_admin in quakelive_additional_admins %}
+{{ additional_admin }}|admin
+{% endfor %}

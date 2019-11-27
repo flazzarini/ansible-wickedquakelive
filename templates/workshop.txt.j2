@@ -1,0 +1,15 @@
+{% for workshop_item in quakelive_workshop_items %}
+# {{ workshop_item.name }}
+{{ workshop_item.id }}
+
+{% endfor %}
+
+#
+#  Soundpack Workshop items
+#
+{% for workshop_item in quakelive_workshop_soundpacks %}
+# {{ workshop_item.name }}
+{{ workshop_item.id }}
+
+{% endfor %}
+

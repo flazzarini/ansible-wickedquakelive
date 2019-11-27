@@ -1,0 +1,8 @@
+---
+
+- name: Install supervisor service script
+  template:
+    src: supervisor/quakelive.conf.j2
+    dest: /etc/supervisor/conf.d/quakelive.conf
+  notify:
+    - reread_supervisor

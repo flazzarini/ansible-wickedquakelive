@@ -1,0 +1,20 @@
+---
+
+- name: Set some facts
+  set_fact:
+    quakelive_home: "/home/{{ quakelive_user }}/quakelive"
+
+- name: Install required packages
+  import_tasks: setup_host.yml
+
+- name: User setup
+  import_tasks: setup_user.yml
+
+- name: Install Quakelive
+  import_tasks: install_quakelive.yml
+
+- name: Configure Quakelive Server
+  import_tasks: configure_server.yml
+
+- name: Configure Supervisor
+  import_tasks: configure_supervisor.yml

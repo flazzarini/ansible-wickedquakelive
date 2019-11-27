@@ -1,0 +1,62 @@
+- name: Verify if i386 is enabled
+  shell: |
+    set -o pipefail
+    dpkg --print-foreign-architectures | grep i386
+  args:
+    executable: /bin/bash
+  register: result_i386_check
+  changed_when: result_i386_check.rc == 1
+  failed_when: result_i386_check.rc > 1
+
+- name: Enable i386 architecture
+  command: dpkg --add-architecture i386
+  when: result_i386_check.rc == 1
+  notify:
+    - quakelive_update_cache
+
+- name: Ensure apt-add-repository is installed
+  apt:
+    pkg: "software-properties-common"
+    state: "present"
+
+- name: Verify if non-free repo is enabled
+  shell: |
+    set -o pipefail
+    cat /etc/apt/sources.list | grep non-free
+  args:
+    executable: /bin/bash
+  register: result_non_free_check
+  changed_when: result_non_free_check.rc == 1
+  failed_when: result_non_free_check.rc > 1
+
+- name: Ensure non-free repo is enabled
+  shell: apt-add-repository non-free
+  when: result_non_free_check.rc == 1
+  notify:
+    - quakelive_update_cache
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Ensure dependency packages are installed
+  apt:
+    pkg: "{{ quakelive_dep_packages }}"
+    state: "present"
+
+- name: accept steam license
+  debconf:
+    name: "steam"
+    question: "steam/question"
+    value: "I AGREE"
+    vtype: "select"
+
+- name: Install steam packges
+  apt:
+    pkg: "{{ quakelive_packages }}"
+    state: "present"
+
+- name: Create link in /usr/local/bin for steamcmd
+  file:
+    src: /usr/games/steamcmd
+    dest: /usr/local/bin/steamcmd
+    state: link

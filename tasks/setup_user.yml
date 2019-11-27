@@ -1,0 +1,5 @@
+- name: Ensure the wicked user exists
+  user:
+    name: "{{ quakelive_user }}"
+    state: "present"
+    shell: "/bin/bash"

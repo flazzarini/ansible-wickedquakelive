@@ -1,0 +1,11 @@
+---
+
+- name: quakelive_update_cache
+  apt:
+    update_cache: "yes"
+
+- name: reread_supervisor
+  shell: supervisorctl reread && supervisorctl updatcomman://www.eboo.lu/ccpid-web/?TAM_OP=login&METHOD=GET&URL=%2Fweb%2F&AUTHNLEVEL=#/contracts/SH2awuk0EQuk8qZDuRpzZg../accountse
+
+
+# handlers file for ansible-quakelive
