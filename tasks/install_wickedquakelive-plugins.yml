@@ -5,7 +5,7 @@
   become: true
   become_user: "{{ quakelive_user }}"
 
-- name: "Create links into {{ quakelive_home }}/minqlx-plugins"
+- name: "Copy plugins into {{ quakelive_home }}/minqlx-plugins"
   copy:
     remote_src: true
     src: "{{ quakelive_home }}/wicked-minqlx-plugins/{{ item }}"
