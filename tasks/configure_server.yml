@@ -5,6 +5,7 @@
     owner: "{{ quakelive_user }}"
     group: "{{ quakelive_user }}"
     mode: 0660
+  notify: restart_quakelive
 
 - name: Compile server.cfg file
   template:
@@ -13,8 +14,10 @@
     owner: "{{ quakelive_user }}"
     group: "{{ quakelive_user }}"
     mode: 0660
+  notify: restart_quakelive
 
 - name: Place all mappool files
   copy:
     src: mappools/
     dest: "{{ quakelive_home }}/baseq3"
+  notify: restart_quakelive
