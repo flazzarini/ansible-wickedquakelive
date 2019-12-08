@@ -5,7 +5,10 @@
     update_cache: "yes"
 
 - name: reread_supervisor
-  shell: supervisorctl reread && supervisorctl updatcomman://www.eboo.lu/ccpid-web/?TAM_OP=login&METHOD=GET&URL=%2Fweb%2F&AUTHNLEVEL=#/contracts/SH2awuk0EQuk8qZDuRpzZg../accountse
+  shell: supervisorctl reread && supervisorctl update
+
+- name: restart_quakelive
+  shell: supervisorctl restart quakelive
 
 
 # handlers file for ansible-quakelive
