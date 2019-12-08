@@ -14,3 +14,4 @@
   loop:
     - "wickedplayerdies.py"
     - "wickedshout.py"
+  notify: restart_quakelive

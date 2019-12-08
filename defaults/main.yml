@@ -3,7 +3,7 @@
 quakelive_user: wicked
 quakelive_server_hostname: "Wicked Quakelive"
 quakelive_server_tags: "ca"
-quakelive_server_mappool: "mappool_wickedca.txt"
+quakelive_server_mappool: "mappool_wickedpql.txt"
 quakelive_owner_steam_id: 1
 quakelive_server_password: null
 quakelive_rcon_password: foobar
@@ -52,6 +52,9 @@ quakelive_workshop_items:
 
   - name: Activates GIBS
     id: 691078677
+
+  - name: More Gametypes
+    id: 538941289
 
 quakelive_workshop_soundpacks:
   - name: The Wicked Net - Game Sounds

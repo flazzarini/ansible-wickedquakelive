@@ -37,6 +37,7 @@
     dest: "{{ quakelive_home }}/minqlx-plugins"
   become: true
   become_user: "{{ quakelive_user }}"
+  notify: restart_quakelive
 
 - name: Install pip requirements of minqlx
   pip:
