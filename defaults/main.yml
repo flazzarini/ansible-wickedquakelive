@@ -54,13 +54,10 @@ quakelive_workshop_items:
     id: 691078677
 
 quakelive_workshop_soundpacks:
-  - name: Soundpack Funny Sounds Pack for Minqlx
-    id: 620087103
+  - name: The Wicked Net - Game Sounds
+    id: 1931426635
 
-  - name: Soundpack West Coast Crew
-    id: 1733859113
-
-  - name: End of Game Sound from Busstation Server
-    id: 600151350
+  - name: The Wicked Net - Character Soundpack
+    id: 1931340242
 
 # defaults file for ansible-quakelive
