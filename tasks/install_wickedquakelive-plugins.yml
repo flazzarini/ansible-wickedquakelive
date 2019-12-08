@@ -1,0 +1,16 @@
+- name: Install wicked-minqlx-plugins
+  git:
+    repo: https://github.com/flazzarini/wicked-minqlx-plugins
+    dest: "{{ quakelive_home }}/wicked-minqlx-plugins"
+  become: true
+  become_user: "{{ quakelive_user }}"
+
+- name: "Create links into {{ quakelive_home }}/minqlx-plugins"
+  file:
+    state: link
+    src: "{{ quakelive_home }}/wicked-minqlx-plugins/{{ item }}"
+    dest: "{{ quakelive_home }}/minqlx-plugins/{{ item }}"
+    owner: "{{ quakelive_user }}"
+  loop:
+    - "wickedplayerdies.py"
+    - "wickedshout.py"

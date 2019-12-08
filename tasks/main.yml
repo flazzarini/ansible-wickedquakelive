@@ -13,6 +13,9 @@
 - name: Install Quakelive
   import_tasks: install_quakelive.yml
 
+- name: Install wicked quakelive plugins
+  import_tasks: install_wickedquakelive-plugins.yml
+
 - name: Configure Quakelive Server
   import_tasks: configure_server.yml
 

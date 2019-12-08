@@ -119,7 +119,7 @@ set zmq_stats_password "{{ quakelive_zmq_password }}"
 
 // Minqlx Settings
 set qlx_owner "{{ quakelive_owner_steam_id }}"
-set qlx_plugins "motd, workshop, myFun, balance"
+set qlx_plugins "motd, workshop, myFun, balance, wickedplayerdies, wickedshout"
 set qlx_workshopReferences "{{ quakelive_workshop_soundpacks | map(attribute='id') | join(', ') }}"
 set qlx_funPlayerSoundRepeat "3"
 
