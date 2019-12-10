@@ -63,4 +63,7 @@ quakelive_workshop_soundpacks:
   - name: The Wicked Net - Character Soundpack
     id: 1931340242
 
+  - name: The Wicked Net - Shout Sounds
+    id: 1933764047
+
 # defaults file for ansible-quakelive
