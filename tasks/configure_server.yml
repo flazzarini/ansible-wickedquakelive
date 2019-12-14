@@ -16,6 +16,15 @@
     mode: 0660
   notify: restart_quakelive
 
+- name: Compile access.txt file
+  template:
+    src: access.txt.j2
+    dest: "{{ quakelive_home }}/baseq3/access.txt"
+    owner: "{{ quakelive_user }}"
+    group: "{{ quakelive_user }}"
+    mode: 0660
+  notify: restart_quakelive
+
 - name: Place all mappool files
   copy:
     src: mappools/
