@@ -30,7 +30,7 @@
   failed_when: result_non_free_check.rc > 1
 
 - name: Ensure non-free repo is enabled
-  shell: apt-add-repository non-free
+  command: apt-add-repository non-free
   when: result_non_free_check.rc == 1
   notify:
     - quakelive_update_cache

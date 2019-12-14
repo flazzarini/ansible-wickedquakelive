@@ -35,6 +35,7 @@
   git:
     repo: https://github.com/MinoMino/minqlx-plugins.git
     dest: "{{ quakelive_home }}/minqlx-plugins"
+    version: "master"
   become: true
   become_user: "{{ quakelive_user }}"
   notify: restart_quakelive

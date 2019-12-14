@@ -5,10 +5,13 @@
     update_cache: "yes"
 
 - name: reread_supervisor
-  shell: supervisorctl reread && supervisorctl update
+  supervisorctl:
+    name: quakelive
+    state: present
 
 - name: restart_quakelive
-  shell: supervisorctl restart quakelive
-
+  supervisorctl:
+    state: restarted
+    name: quakelive
 
 # handlers file for ansible-quakelive

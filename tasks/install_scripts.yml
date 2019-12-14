@@ -1,0 +1,13 @@
+- name: Make sure scripts folder exits
+  file:
+    state: directory
+    path: "{{ quakelive_home }}../scripts/"
+    owner: "{{ quakelive_user }}"
+    mode: 0750
+
+- name: Install download_update_workshop script
+  template:
+    src: "scripts/download_update_workshop.sh.j2"
+    dest: "{{ quakelive_home }}../scripts/"
+    owner: "{{ quakelive_user }}"
+    mode: 0750

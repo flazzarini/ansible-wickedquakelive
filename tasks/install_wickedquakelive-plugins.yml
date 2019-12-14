@@ -2,6 +2,7 @@
   git:
     repo: https://github.com/flazzarini/wicked-minqlx-plugins
     dest: "{{ quakelive_home }}/wicked-minqlx-plugins"
+    version: "master"
   become: true
   become_user: "{{ quakelive_user }}"
 
